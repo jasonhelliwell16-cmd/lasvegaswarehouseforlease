@@ -49,3 +49,14 @@ function notifyPlatformTenantRep(data) {
     // Silent on purpose — Web3Forms already handled the real notification.
   });
 }
+
+// Newsletter/deal-alert signups aren't leads — they go into the real
+// subscriber list rather than creating a contact/lead record. 409 (already
+// subscribed) is expected and fine to ignore silently.
+function notifyPlatformNewsletter(email) {
+  fetch(PLATFORM_API_BASE + '/v1/newsletter/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  }).catch(function () {});
+}

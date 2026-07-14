@@ -272,6 +272,59 @@ footer a:hover{color:var(--gold)}
 .quick-btn{background:transparent;border:1px solid var(--border-gold);color:var(--gold);font-size:0.72rem;padding:5px 10px;border-radius:20px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s}
 .quick-btn:hover{background:rgba(201,168,76,0.1)}
 
+/* NEWSLETTER POPUP (deal alerts, exit-intent triggered) */
+#np-overlay{display:none;position:fixed;inset:0;z-index:9998;background:rgba(13,13,15,0.82);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1.25rem}
+#np-overlay.open{display:flex}
+.np-modal{background:var(--dark-2);border:1px solid var(--border-gold);border-radius:16px;width:100%;max-width:420px;padding:2rem 1.85rem 1.75rem;position:relative;text-align:center;animation:npPop .25s ease}
+@keyframes npPop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.np-close{position:absolute;top:0.9rem;right:0.9rem;width:30px;height:30px;border-radius:50%;background:var(--dark-3);border:none;color:var(--text-muted);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.np-close:hover{background:var(--dark-4);color:var(--text-primary)}
+.np-icon{font-size:2rem;margin-bottom:0.85rem}
+.np-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.12);border:1px solid var(--border-gold);color:var(--gold);font-size:11px;font-weight:600;padding:3px 12px;border-radius:20px;margin-bottom:0.85rem}
+.np-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--text-primary);margin-bottom:0.5rem}
+.np-sub{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:1.4rem}
+.np-form{display:flex;flex-direction:column;gap:10px}
+.np-input{width:100%;background:var(--dark-3);border:1px solid var(--border);color:var(--text-primary);font-size:0.9rem;font-family:'Inter',sans-serif;padding:12px 14px;border-radius:8px;outline:none;box-sizing:border-box;transition:border-color .2s}
+.np-input:focus{border-color:var(--gold)}
+.np-btn{background:var(--gold);color:var(--dark);border:none;border-radius:8px;padding:12px;font-family:'Inter',sans-serif;font-size:0.88rem;font-weight:700;cursor:pointer;transition:background .2s}
+.np-btn:hover{background:var(--gold-light)}
+.np-note{font-size:11px;color:var(--text-muted);margin-top:2px}
+
+/* SPACE MATCH QUIZ (replaces the long Space Requirements form) */
+#whqz-overlay{display:none;position:fixed;inset:0;z-index:9997;background:rgba(13,13,15,0.88);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1.25rem}
+#whqz-overlay.open{display:flex}
+.whqz-modal{background:var(--dark-2);border:1px solid var(--border);border-radius:16px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;padding:2.25rem 2rem 2rem;position:relative;animation:npPop .25s ease}
+.whqz-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;background:var(--dark-3);border:none;color:var(--text-primary);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.whqz-close:hover{background:var(--dark-4)}
+.whqz-progress-wrap{height:4px;background:var(--dark-4);border-radius:4px;margin-bottom:0.6rem;overflow:hidden}
+.whqz-progress-bar{height:100%;background:var(--gold);border-radius:4px;transition:width .3s ease;width:0%}
+.whqz-step-label{font-size:11.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.35rem}
+.whqz-q{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:400;color:var(--text-primary);line-height:1.3;margin-bottom:0.5rem}
+.whqz-hint{font-size:12.5px;color:var(--text-muted);line-height:1.5;margin-bottom:1.25rem}
+.whqz-body{animation:whqzFade .3s ease}
+@keyframes whqzFade{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+.whqz-input{width:100%;background:var(--dark-3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;color:var(--text-primary);font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.whqz-input:focus{border-color:var(--gold)}
+.whqz-options{display:grid;gap:0.65rem}
+.whqz-opt{width:100%;text-align:left;background:var(--dark-3);border:1px solid var(--border);border-radius:8px;padding:14px 18px;color:var(--text-secondary);font-family:'Inter',sans-serif;font-size:14.5px;font-weight:500;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:space-between}
+.whqz-opt:hover{border-color:var(--gold);color:var(--text-primary)}
+.whqz-opt.selected{border-color:var(--gold);background:rgba(232,101,10,0.1);color:var(--text-primary)}
+.whqz-opt .whqz-check{opacity:0;transition:opacity .15s;color:var(--gold)}
+.whqz-opt.selected .whqz-check{opacity:1}
+.whqz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.75rem;gap:1rem}
+.whqz-back,.whqz-skip{background:none;border:none;color:var(--text-muted);font-family:'Inter',sans-serif;font-size:13.5px;cursor:pointer;padding:8px}
+.whqz-back:hover,.whqz-skip:hover{color:var(--text-primary)}
+.whqz-next{background:var(--gold);color:var(--dark);border:none;border-radius:8px;padding:13px 30px;font-family:'Inter',sans-serif;font-size:14.5px;font-weight:700;cursor:pointer;transition:background .2s}
+.whqz-next:hover{background:var(--gold-light)}
+.whqz-next:disabled{background:var(--dark-4);color:var(--text-muted);cursor:not-allowed}
+.whqz-results{text-align:center;padding:0.5rem 0 0}
+.whqz-results-icon{font-size:2.5rem;margin-bottom:1rem}
+.whqz-results h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;margin-bottom:0.75rem;color:var(--text-primary)}
+.whqz-results p{color:var(--text-secondary);font-size:0.95rem;line-height:1.65;margin-bottom:1.5rem}
+.whqz-contact-fields{display:grid;gap:0.75rem;margin-bottom:1.25rem;text-align:left}
+.whqz-cta{width:100%}
+@media(max-width:640px){.whqz-modal{padding:1.75rem 1.35rem 1.5rem}.whqz-q{font-size:1.15rem}}
+
 /* TICKER */
 .ticker-wrap{background:#fff;overflow:hidden;white-space:nowrap;padding:0;height:36px;display:flex;align-items:center;border-bottom:1px solid #eee}
 .ticker-track{display:inline-flex;animation:ticker 80s linear infinite}
@@ -569,6 +622,9 @@ footer a:hover{color:var(--gold)}
       <a href="#units" class="btn-primary">View Available Units</a>
       <a href="sms:7028636001" class="btn-secondary">Text to Book a Showing</a>
     </div>
+    <p style="margin-top:0.9rem;">
+      <a href="#" onclick="if(!chatOpen)toggleChat();return false;" style="color:var(--text-muted);text-decoration:underline;font-size:0.82rem;">💬 Or just ask a quick question — chat with Jason's assistant</a>
+    </p>
   </div>
 </div>
 
@@ -1249,147 +1305,11 @@ document.getElementById('wh-lead-form').addEventListener('submit', async functio
     </div>
     <!-- END PROCESS STEPS -->
     <p class="section-sub">Looking for small warehouse space for rent in Las Vegas, an office warehouse for rent, or a large distribution bay? Fill in your requirements and Jason will match you to the right unit — often the same day.</p>
-    <div class="req-form-wrap">
+    <div class="req-form-wrap" style="text-align:center">
       <p class="req-form-title">Space Requirements</p>
-      <p class="req-form-sub">Takes 60 seconds. Jason reviews every submission personally.</p>
-      <form id="req-form">
-        <input type="hidden" name="access_key" value="fed4e86d-322a-4d88-aa08-6f14f161b86b">
-        <input type="hidden" name="subject" value="Industrial Lead — Space Requirements">
-        <input type="hidden" name="from_name" value="LasVegasWarehouseForLease.com">
-        <div class="form-grid">
-
-          <div class="form-group">
-            <label>Your name *</label>
-            <input type="text" name="name" placeholder="First and last name" required>
-          </div>
-          <div class="form-group">
-            <label>Phone *</label>
-            <input type="tel" name="phone" placeholder="702-xxx-xxxx" required>
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="you@example.com">
-          </div>
-          <div class="form-group">
-            <label>Business type</label>
-            <input type="text" name="business_type" placeholder="e.g. TikTok shop, auto detailing, fabrication…">
-          </div>
-
-          <p class="form-section-label">Space requirements</p>
-
-          <div class="form-group">
-            <label>Space type *</label>
-            <select name="space_type" required>
-              <option value="" disabled selected>Select type</option>
-              <option>Flex / light industrial</option>
-              <option>Warehouse / storage only</option>
-              <option>Office + warehouse combo</option>
-              <option>Showroom + warehouse</option>
-              <option>Cold storage</option>
-              <option>Not sure — advise me</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Size needed *</label>
-            <select name="size" required>
-              <option value="" disabled selected>Select size</option>
-              <option>Under 1,000 SF</option>
-              <option>1,000 – 2,000 SF</option>
-              <option>2,000 – 3,000 SF</option>
-              <option>3,000 – 5,000 SF</option>
-              <option>5,000 – 10,000 SF</option>
-              <option>10,000 SF+</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Preferred location</label>
-            <select name="location">
-              <option value="" disabled selected>Select area</option>
-              <option>West Strip / Sahara corridor</option>
-              <option>North Las Vegas / Rancho</option>
-              <option>Henderson / South LV</option>
-              <option>Airport / East LV</option>
-              <option>Summerlin / NW Las Vegas</option>
-              <option>Open to any — best deal wins</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Monthly budget (NNN)</label>
-            <select name="budget">
-              <option value="" disabled selected>Select budget</option>
-              <option>Under $1,500/mo</option>
-              <option>$1,500 – $2,500/mo</option>
-              <option>$2,500 – $4,000/mo</option>
-              <option>$4,000 – $6,000/mo</option>
-              <option>$6,000+/mo</option>
-              <option>Flexible — right space wins</option>
-            </select>
-          </div>
-
-          <p class="form-section-label">Must-have features</p>
-
-          <div class="form-group form-full">
-            <label>Loading dock / grade door</label>
-            <select name="loading">
-              <option value="" disabled selected>Select requirement</option>
-              <option>Grade-level door required (van / truck access)</option>
-              <option>Loading dock preferred</option>
-              <option>Drive-through access needed</option>
-              <option>No special loading requirement</option>
-            </select>
-          </div>
-
-          <div class="form-group form-full">
-            <label>Power supply</label>
-            <select name="power">
-              <option value="" disabled selected>Select power need</option>
-              <option>Standard 100A single-phase (basic office / retail ops)</option>
-              <option>200A single-phase (light equipment)</option>
-              <option>200A 3-phase (production / machinery)</option>
-              <option>400A 3-phase (heavy equipment / manufacturing)</option>
-              <option>Not sure — can you advise?</option>
-            </select>
-          </div>
-
-          <div class="form-group form-full">
-            <label>Other must-haves (check all that apply)</label>
-            <div class="checkbox-group" style="margin-top:4px">
-              <label class="checkbox-item"><input type="checkbox" name="needs[]" value="office_space"> <strong>Dedicated office space</strong> — front office / reception area</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs[]" value="restroom"> <strong>Private restroom</strong></label>
-              <label class="checkbox-item"><input type="checkbox" name="needs[]" value="ac"> <strong>Air conditioning</strong> in warehouse area</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs[]" value="signage"> <strong>Exterior signage</strong> allowed</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs[]" value="security"> <strong>24/7 access</strong> / security camera coverage</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs[]" value="ecommerce"> <strong>E-commerce / high parcel volume</strong> — multiple daily deliveries</label>
-              <label class="checkbox-item"><input type="checkbox" name="needs[]" value="spray_booth"> <strong>Spray booth / ventilation</strong></label>
-            </div>
-          </div>
-
-          <div class="form-group form-full">
-            <label>Move-in timeline *</label>
-            <select name="timeline" required>
-              <option value="" disabled selected>Select timeline</option>
-              <option>ASAP — within 2 weeks</option>
-              <option>30 days</option>
-              <option>60–90 days</option>
-              <option>3–6 months</option>
-              <option>Just exploring</option>
-            </select>
-          </div>
-
-          <div class="form-group form-full">
-            <label>Anything else Jason should know?</label>
-            <textarea name="notes" placeholder="Tell Jason about your business, special requirements, or questions…"></textarea>
-          </div>
-
-        </div>
-        <div class="submit-row">
-          <button type="submit" class="btn-primary">Send My Requirements →</button>
-          <span class="submit-note">Jason reviews every submission and responds within a few hours — often same day.</span>
-        </div>
-        <div id="form-success">
-          ✓ Got it — Jason will review your requirements and be in touch shortly. Can't wait? Text him at 702-863-6001.
-        </div>
-      </form>
+      <p class="req-form-sub">Answer a few quick questions — takes about 60 seconds. Jason reviews every submission personally.</p>
+      <button type="button" class="btn-primary" onclick="whQzOpen()" style="margin-top:0.5rem">Start My Space Match →</button>
+      <p class="submit-note" style="margin-top:0.85rem">Jason reviews every submission and responds within a few hours — often same day.</p>
     </div>
   </div>
 </section>
@@ -1673,6 +1593,32 @@ document.getElementById('wh-lead-form').addEventListener('submit', async functio
     <div class="modal-success" id="modal-success">
       <p>✓ Enquiry sent!</p>
       <span>Jason will be in touch shortly — usually within a few hours. Can't wait? Text him at <strong>702-863-6001</strong>.</span>
+    </div>
+  </div>
+</div>
+
+<!-- SPACE MATCH QUIZ -->
+<div id="whqz-overlay" onclick="if(event.target===this)whQzClose()" role="dialog" aria-modal="true" aria-label="Space Requirements">
+  <div class="whqz-modal">
+    <button class="whqz-close" onclick="whQzClose()" aria-label="Close">✕</button>
+    <div id="whqz-content"></div>
+  </div>
+</div>
+
+<!-- NEWSLETTER / DEAL ALERTS POPUP -->
+<div id="np-overlay" onclick="if(event.target===this)npClose()">
+  <div class="np-modal">
+    <button class="np-close" onclick="npClose()" aria-label="Close">✕</button>
+    <div id="np-content">
+      <div class="np-icon">🔔</div>
+      <div class="np-badge">New listings first</div>
+      <div class="np-title">Get notified when new space opens up</div>
+      <div class="np-sub">Las Vegas warehouse &amp; flex space alerts straight to your inbox — Jason personally curates every one, before units hit the open market.</div>
+      <div class="np-form">
+        <input class="np-input" id="np-email" type="email" placeholder="your@email.com">
+        <button class="np-btn" onclick="npSubmit()">🔔 Get space alerts</button>
+        <div class="np-note">🔒 No spam. Unsubscribe any time.</div>
+      </div>
     </div>
   </div>
 </div>
@@ -1979,32 +1925,311 @@ document.getElementById('inq-form').addEventListener('submit', async function(e)
   }
 });
 
-document.getElementById('req-form').addEventListener('submit', async function(e){
-  e.preventDefault();
-  const btn = this.querySelector('button[type=submit]');
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-  try {
-    const formData = new FormData(this);
-    notifyPlatformTenantRep({
-      name: formData.get('name'), email: formData.get('email'), phone: formData.get('phone'),
-      sizeNeeded: formData.get('size'), budget: formData.get('budget'), timeline: formData.get('timeline'),
-      powerNeeds: formData.get('power'), loadingRequirements: formData.get('loading'), businessType: formData.get('business_type')
-    });
-    const res = await fetch('https://api.web3forms.com/submit', {method:'POST', body: formData});
-    const data = await res.json();
-    if(data.success){
-      document.getElementById('form-success').style.display = 'block';
-      btn.textContent = '✓ Sent';
-    } else {
-      btn.textContent = 'Try again';
-      btn.disabled = false;
+</script>
+
+<script>
+// SPACE MATCH QUIZ — replaces the long Space Requirements form with a
+// one-question-at-a-time flow. Same fields, same submission targets
+// (Web3Forms + the Platform's tenant-rep endpoint), just less daunting to
+// start. Engine pattern mirrors multifamilylasvegas.com's qz quiz (index.html),
+// extended with a "skip" affordance for optional questions and a
+// multiselect question type (neither of which the original engine needed).
+(function(){
+  var whQzQuestions = [
+    { id:'space_type', type:'select', required:true, q:'What type of space do you need?',
+      opts:['Flex / light industrial','Warehouse / storage only','Office + warehouse combo','Showroom + warehouse','Cold storage','Not sure — advise me'] },
+    { id:'size', type:'select', required:true, q:'How much space do you need?',
+      opts:['Under 1,000 SF','1,000 – 2,000 SF','2,000 – 3,000 SF','3,000 – 5,000 SF','5,000 – 10,000 SF','10,000 SF+'] },
+    { id:'location', type:'select', required:false, q:'Any preferred area?',
+      opts:['West Strip / Sahara corridor','North Las Vegas / Rancho','Henderson / South LV','Airport / East LV','Summerlin / NW Las Vegas','Open to any — best deal wins'] },
+    { id:'budget', type:'select', required:false, q:"What's your monthly budget?", hint:'Quoted as NNN — base rent plus taxes, insurance, and CAM.',
+      opts:['Under $1,500/mo','$1,500 – $2,500/mo','$2,500 – $4,000/mo','$4,000 – $6,000/mo','$6,000+/mo','Flexible — right space wins'] },
+    { id:'power', type:'select', required:false, q:'Do you need special power?',
+      opts:['Standard 100A single-phase (basic office / retail ops)','200A single-phase (light equipment)','200A 3-phase (production / machinery)','400A 3-phase (heavy equipment / manufacturing)','Not sure — can you advise?'] },
+    { id:'loading', type:'select', required:false, q:'Loading dock or grade door?',
+      opts:['Grade-level door required (van / truck access)','Loading dock preferred','Drive-through access needed','No special loading requirement'] },
+    { id:'needs', type:'multiselect', required:false, q:'Any other must-haves?', hint:'Select all that apply, or skip.',
+      opts:[
+        {value:'office_space', label:'Dedicated office space'},
+        {value:'restroom', label:'Private restroom'},
+        {value:'ac', label:'Air conditioning in warehouse area'},
+        {value:'signage', label:'Exterior signage allowed'},
+        {value:'security', label:'24/7 access / security cameras'},
+        {value:'ecommerce', label:'E-commerce / high parcel volume'},
+        {value:'spray_booth', label:'Spray booth / ventilation'}
+      ] },
+    { id:'timeline', type:'select', required:true, q:'When do you need to move in?',
+      opts:['ASAP — within 2 weeks','30 days','60–90 days','3–6 months','Just exploring'] },
+    { id:'business_type', type:'text', required:false, q:'What kind of business is this for?', ph:'e.g. TikTok shop, auto detailing, fabrication…' }
+  ];
+
+  var whQzState = { step:0, answers:{} };
+
+  function whEsc(s){ var d=document.createElement('div'); d.textContent = String(s==null?'':s); return d.innerHTML; }
+
+  window.whQzOpen = function(){
+    whQzState = { step:0, answers:{} };
+    document.getElementById('whqz-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    whQzRenderQuestion();
+  };
+
+  window.whQzClose = function(){
+    document.getElementById('whqz-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      var ov = document.getElementById('whqz-overlay');
+      if(ov && ov.classList.contains('open')) whQzClose();
     }
-  } catch(err) {
-    btn.textContent = 'Try again';
-    btn.disabled = false;
+  });
+
+  function whQzRenderQuestion(){
+    var i = whQzState.step;
+    var total = whQzQuestions.length;
+    var q = whQzQuestions[i];
+    var pct = Math.round((i/total)*100);
+
+    var bodyHtml = '';
+    if(q.type === 'text'){
+      var val = whQzState.answers[q.id] || '';
+      bodyHtml = '<input class="whqz-input" id="whqzFieldInput" type="text" placeholder="'+whEsc(q.ph||'')+'" value="'+whEsc(val)+'" oninput="whQzOnInput(this.value)" onkeydown="if(event.key===\'Enter\'){event.preventDefault();whQzAdvance();}">';
+    } else if(q.type === 'multiselect'){
+      var selected = whQzState.answers[q.id] || [];
+      var opts = q.opts.map(function(opt){
+        var sel = selected.indexOf(opt.value) > -1 ? ' selected' : '';
+        return '<button type="button" class="whqz-opt'+sel+'" onclick="whQzToggleMulti(\''+opt.value+'\')">'+whEsc(opt.label)+'<span class="whqz-check">✓</span></button>';
+      }).join('');
+      bodyHtml = '<div class="whqz-options">'+opts+'</div>';
+    } else {
+      var opts2 = q.opts.map(function(opt){
+        var sel = whQzState.answers[q.id] === opt ? ' selected' : '';
+        return '<button type="button" class="whqz-opt'+sel+'" onclick="whQzChoose(\''+opt.replace(/'/g,"\\'")+'\')">'+whEsc(opt)+'<span class="whqz-check">✓</span></button>';
+      }).join('');
+      bodyHtml = '<div class="whqz-options">'+opts2+'</div>';
+    }
+
+    var hasAnswer = q.type === 'multiselect'
+      ? (whQzState.answers[q.id] && whQzState.answers[q.id].length > 0)
+      : (whQzState.answers[q.id] && String(whQzState.answers[q.id]).trim());
+
+    var navParts = [];
+    navParts.push(i > 0 ? '<button class="whqz-back" onclick="whQzBack()">← Back</button>' : '<span></span>');
+    var rightNav = '';
+    if(!q.required) rightNav += '<button class="whqz-skip" onclick="whQzSkip()">Skip</button>';
+    if(q.type === 'text' || q.type === 'multiselect'){
+      rightNav += '<button class="whqz-next" id="whqzNextBtn" onclick="whQzAdvance()"'+(q.required && !hasAnswer ? ' disabled' : '')+'>'+(i===total-1?'Continue →':'Continue →')+'</button>';
+    }
+    navParts.push('<div style="display:flex;gap:0.75rem;align-items:center">'+rightNav+'</div>');
+
+    var hintHtml = q.hint ? '<div class="whqz-hint">'+whEsc(q.hint)+'</div>' : '';
+
+    document.getElementById('whqz-content').innerHTML =
+      '<div class="whqz-step-label">Step '+(i+1)+' of '+total+'</div>'+
+      '<div class="whqz-progress-wrap"><div class="whqz-progress-bar" style="width:'+pct+'%"></div></div>'+
+      '<div class="whqz-body"><div class="whqz-q">'+whEsc(q.q)+'</div>'+hintHtml+bodyHtml+
+      '<div class="whqz-nav">'+navParts.join('')+'</div></div>';
+
+    if(q.type === 'text'){
+      setTimeout(function(){ var el = document.getElementById('whqzFieldInput'); if(el) el.focus(); }, 60);
+    }
+  }
+
+  window.whQzOnInput = function(val){
+    whQzState.answers[whQzQuestions[whQzState.step].id] = val;
+    var btn = document.getElementById('whqzNextBtn');
+    if(btn) btn.disabled = false;
+  };
+
+  window.whQzChoose = function(val){
+    whQzState.answers[whQzQuestions[whQzState.step].id] = val;
+    whQzRenderQuestion();
+    setTimeout(function(){ whQzAdvance(); }, 280);
+  };
+
+  window.whQzToggleMulti = function(val){
+    var q = whQzQuestions[whQzState.step];
+    var current = whQzState.answers[q.id] || [];
+    var idx = current.indexOf(val);
+    if(idx > -1) current.splice(idx, 1); else current.push(val);
+    whQzState.answers[q.id] = current;
+    whQzRenderQuestion();
+  };
+
+  window.whQzAdvance = function(){
+    var q = whQzQuestions[whQzState.step];
+    var hasAnswer = q.type === 'multiselect'
+      ? (whQzState.answers[q.id] && whQzState.answers[q.id].length > 0)
+      : (whQzState.answers[q.id] && String(whQzState.answers[q.id]).trim());
+    if(q.required && !hasAnswer) return;
+    if(whQzState.step < whQzQuestions.length - 1){
+      whQzState.step++;
+      whQzRenderQuestion();
+    } else {
+      whQzRenderResults();
+    }
+  };
+
+  window.whQzSkip = function(){
+    if(whQzState.step < whQzQuestions.length - 1){
+      whQzState.step++;
+      whQzRenderQuestion();
+    } else {
+      whQzRenderResults();
+    }
+  };
+
+  window.whQzBack = function(){
+    if(whQzState.step > 0){
+      whQzState.step--;
+      whQzRenderQuestion();
+    }
+  };
+
+  function whQzRenderResults(){
+    document.getElementById('whqz-content').innerHTML =
+      '<div class="whqz-results">'+
+        '<div class="whqz-results-icon">✅</div>'+
+        '<h3>Almost done — where should Jason send your matches?</h3>'+
+        '<p>He\'ll personally review your requirements and follow up, usually within a few hours.</p>'+
+        '<div class="whqz-contact-fields">'+
+          '<input class="whqz-input" id="whqzName" type="text" placeholder="Full name *">'+
+          '<input class="whqz-input" id="whqzPhone" type="tel" placeholder="Phone number *">'+
+          '<input class="whqz-input" id="whqzEmail" type="email" placeholder="Email address (optional)">'+
+          '<textarea class="whqz-input" id="whqzNotes" placeholder="Anything else Jason should know? (optional)" rows="3"></textarea>'+
+        '</div>'+
+        '<button class="whqz-next whqz-cta" onclick="whQzSubmit()">Send My Requirements →</button>'+
+        '<div id="whqzErr" style="color:#e35b5b;font-size:12.5px;margin-top:0.75rem"></div>'+
+      '</div>';
+  }
+
+  window.whQzSubmit = function(){
+    var name = (document.getElementById('whqzName').value||'').trim();
+    var phone = (document.getElementById('whqzPhone').value||'').trim();
+    var email = (document.getElementById('whqzEmail').value||'').trim();
+    var notes = (document.getElementById('whqzNotes').value||'').trim();
+    var err = document.getElementById('whqzErr');
+    if(!name){ err.textContent = 'Please enter your name.'; return; }
+    if(!phone){ err.textContent = 'Please enter your phone number.'; return; }
+    err.textContent = '';
+
+    var a = whQzState.answers;
+    var needsLabels = (a.needs || []).map(function(v){
+      var found = whQzQuestions[6].opts.filter(function(o){ return o.value === v; })[0];
+      return found ? found.label : v;
+    });
+
+    var lines = whQzQuestions.map(function(q){
+      if(q.id === 'needs') return q.q + ' → ' + (needsLabels.length ? needsLabels.join(', ') : 'None selected');
+      return q.q + ' → ' + (a[q.id] || 'Not answered');
+    }).join('\n');
+    if(notes) lines += '\nAnything else? → ' + notes;
+
+    var btn = document.querySelector('.whqz-cta');
+    if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    notifyPlatformTenantRep({
+      name: name, email: email || undefined, phone: phone,
+      sizeNeeded: a.size, budget: a.budget, timeline: a.timeline,
+      powerNeeds: a.power, loadingRequirements: a.loading, businessType: a.business_type
+    });
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        access_key: 'fed4e86d-322a-4d88-aa08-6f14f161b86b',
+        subject: 'Industrial Lead — Space Requirements — ' + name,
+        from_name: 'LasVegasWarehouseForLease.com',
+        name: name, phone: phone, email: email || 'not provided',
+        message: 'SPACE REQUIREMENTS QUIZ\nName: '+name+'\nPhone: '+phone+'\nEmail: '+(email||'not provided')+'\n\n'+lines
+      })
+    }).then(function(){
+      whQzRenderSuccess();
+    }).catch(function(){
+      whQzRenderSuccess();
+    });
+  };
+
+  function whQzRenderSuccess(){
+    document.getElementById('whqz-content').innerHTML =
+      '<div class="whqz-results">'+
+        '<div class="whqz-results-icon">🎉</div>'+
+        '<h3>Got it — thank you</h3>'+
+        '<p>Jason will review your requirements and be in touch shortly. Can\'t wait? Text him at <strong>702-863-6001</strong>.</p>'+
+        '<button class="whqz-next whqz-cta" onclick="whQzClose()">Done</button>'+
+      '</div>';
+  }
+})();
+</script>
+
+<script>
+// Newsletter/deal-alert popup — genuine exit-intent here (nothing else on
+// this site claims that signal; the AI chat widget uses its own time-based
+// teaser instead, see showTeaser() above), plus a dwell-time fallback since
+// mouseout-based exit-intent doesn't fire on touch devices.
+(function(){
+  var NP_KEY = 'npShown';
+  var shown = false;
+  try { shown = sessionStorage.getItem(NP_KEY) === '1'; } catch(e){}
+  if(shown) return;
+
+  function otherModalOpen(){
+    var chat = document.getElementById('chat-window');
+    var quiz = document.getElementById('whqz-overlay');
+    return (chat && chat.classList.contains('open')) || (quiz && quiz.classList.contains('open'));
+  }
+
+  function maybeTrigger(){
+    if(shown || otherModalOpen()) return;
+    shown = true;
+    try { sessionStorage.setItem(NP_KEY, '1'); } catch(e){}
+    document.getElementById('np-overlay').classList.add('open');
+  }
+
+  document.addEventListener('mouseout', function(e){
+    if(!e.relatedTarget && e.clientY <= 0) maybeTrigger();
+  });
+
+  setTimeout(maybeTrigger, 45000);
+})();
+
+function npClose(){
+  document.getElementById('np-overlay').classList.remove('open');
+}
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    var ov = document.getElementById('np-overlay');
+    if(ov && ov.classList.contains('open')) npClose();
   }
 });
+
+function npSubmit(){
+  var email = document.getElementById('np-email').value.trim();
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+
+  notifyPlatformNewsletter(email);
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      access_key: 'fed4e86d-322a-4d88-aa08-6f14f161b86b',
+      subject: '🔔 Space Alert Registration (popup) — ' + email,
+      name: 'Space Alert Signup',
+      email: email,
+      message: 'New space alert registration from the newsletter popup on lasvegaswarehouseforlease.com.\nEmail: ' + email
+    })
+  }).catch(function(){}).then(function(){
+    document.getElementById('np-content').innerHTML =
+      '<div class="np-icon">✅</div>' +
+      '<div class="np-title">You\'re on the list</div>' +
+      '<div class="np-sub">Jason personally curates every alert — you\'ll hear about new space before it hits the open market.</div>';
+  });
+}
 </script>
 </body>
 </html>
