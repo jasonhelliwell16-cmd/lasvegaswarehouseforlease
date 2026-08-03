@@ -1,0 +1,5 @@
+# Personalized mailer-QR landing page — same rewrite (not redirect) pattern
+# as multifamilylasvegas.com/_redirects. campaign.html reads the real token
+# from the URL path itself, not the query string, since a rewrite never
+# updates window.location.search in the browser.
+/campaign/:token /campaign.html?token=:token 200
