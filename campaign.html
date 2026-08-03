@@ -254,16 +254,13 @@ function esc(t){
   return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
-// Deliberately qualitative, not a specific cap-rate/vacancy percentage —
-// unlike multifamilylasvegas.com's teaser (which cites verified Q2 2026
-// submarket figures from netlify/functions/_shared/market-data.js), there's
-// no equivalent verified industrial cap-rate/vacancy dataset in this repo
-// or the Platform's AI prompts to draw from. The Apex Industrial 73,000-jobs
-// figure IS real and already used elsewhere (ai.service.ts's MARKET_CONTEXT,
-// referenced for North Las Vegas). If Jason has real current industrial
-// cap-rate/vacancy numbers he wants cited here, swap them in — worth
-// tightening once a verified source exists, same as multifamily has.
-var METRO_TEASER = 'the Las Vegas industrial market remains one of the tightest in the country, driven by e-commerce and logistics demand along the I-15 corridor';
+// Real for-sale figures — sourced from LoopNet's live Las Vegas warehouse
+// search (loopnet.com/search/warehouses/las-vegas-nv), captured 2026-08-03.
+// Same numbers now live in the Platform's market-data.ts
+// (INDUSTRIAL_SALE_METRO) — keep the two in sync by hand if the figures
+// change, same as multifamilylasvegas.com's teaser already does for its
+// own Q2 2026 submarket data.
+var METRO_TEASER = 'the Las Vegas industrial market is averaging $335 per square foot with cap rates near 5.79%, and active for-sale inventory is up over 32% this year — 131 warehouse listings on the market right now';
 var SUBMARKET_TEASERS = {
   henderson: 'Henderson industrial space stays in high demand from West Coast distribution and logistics tenants, with very little space sitting available',
   'north las vegas': 'North Las Vegas is the epicenter of the current industrial build-out, anchored by Apex Industrial’s 73,000 planned jobs and heavy logistics/distribution demand'
