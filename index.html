@@ -110,6 +110,52 @@ nav{background:rgba(13,17,23,0.97);backdrop-filter:blur(12px);border-bottom:1px 
 .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;color:var(--text-primary);margin-bottom:1rem}
 .hero h1 em{font-style:italic;color:var(--gold)}
 .hero-sub{font-size:1.05rem;color:var(--text-secondary);max-width:560px;margin:0 auto 2rem}
+.hero-search-wrap{display:flex;gap:0;max-width:560px;margin:0 auto;background:var(--dark-3);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .2s}
+.hero-search-wrap:focus-within{border-color:var(--gold)}
+.hero-search-input{flex:1;background:none;border:none;outline:none;color:var(--text-primary);font-family:'Inter',sans-serif;font-size:15px;padding:16px 18px;min-width:0}
+.hero-search-input::placeholder{color:var(--text-muted)}
+.hero-search-btn{background:var(--gold);color:var(--dark);border:none;padding:0 24px;font-size:19px;font-weight:700;cursor:pointer;transition:background .2s;flex-shrink:0}
+.hero-search-btn:hover{background:var(--gold-light)}
+
+/* AI CHAT INTAKE — homepage search bar, replaces the quiz as the primary
+   hero path. The step-by-step quiz (#whqz-overlay) stays wired up further
+   down the page under "Tell Us What You Need" — this is additive, not a
+   replacement for it. */
+#whai-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(13,13,15,0.88);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1.25rem}
+#whai-overlay.open{display:flex}
+.whai-modal{background:var(--dark-2);border:1px solid var(--border);border-radius:16px;width:100%;max-width:560px;max-height:88vh;display:flex;flex-direction:column;position:relative;animation:npPop .25s ease;overflow:hidden}
+.whai-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;background:var(--dark-3);border:none;color:var(--text-primary);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:2}
+.whai-close:hover{background:var(--dark-4)}
+.whai-header{padding:1.5rem 2rem 1rem;border-bottom:1px solid var(--border)}
+.whai-header-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text-primary);margin:0 0 2px}
+.whai-header-sub{font-size:12px;color:var(--text-muted);margin:0}
+.whai-messages{flex:1;overflow-y:auto;padding:1.5rem 2rem;display:flex;flex-direction:column;gap:0.9rem}
+.whai-msg{max-width:82%;padding:11px 15px;border-radius:12px;font-size:14.5px;line-height:1.5;animation:whqzFade .25s ease;white-space:pre-wrap}
+.whai-msg-assistant{align-self:flex-start;background:var(--dark-3);color:var(--text-secondary);border-bottom-left-radius:4px}
+.whai-msg-user{align-self:flex-end;background:var(--gold);color:var(--dark);font-weight:500;border-bottom-right-radius:4px}
+.whai-typing{align-self:flex-start;display:flex;gap:4px;padding:13px 16px;background:var(--dark-3);border-radius:12px;border-bottom-left-radius:4px}
+.whai-typing span{width:6px;height:6px;border-radius:50%;background:var(--text-muted);animation:whaiBounce 1.1s infinite ease-in-out}
+.whai-typing span:nth-child(2){animation-delay:.15s}
+.whai-typing span:nth-child(3){animation-delay:.3s}
+@keyframes whaiBounce{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+.whai-footer{border-top:1px solid var(--border);padding:1rem 1.25rem;background:var(--dark-2)}
+.whai-input-row{display:flex;gap:0.6rem}
+.whai-text-input{flex:1;background:var(--dark-3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text-primary);font-family:'Inter',sans-serif;font-size:14.5px;outline:none;transition:border-color .2s}
+.whai-text-input:focus{border-color:var(--gold)}
+.whai-send-btn{background:var(--gold);color:var(--dark);border:none;border-radius:8px;padding:0 20px;font-weight:700;cursor:pointer;transition:background .2s}
+.whai-send-btn:hover{background:var(--gold-light)}
+.whai-send-btn:disabled{background:var(--dark-4);color:var(--text-muted);cursor:not-allowed}
+.whai-contact-fields{display:grid;gap:0.6rem}
+.whai-contact-fields .whqz-input{margin:0}
+.whai-redirect-footer{text-align:center;font-size:12.5px;color:var(--text-muted)}
+.whai-redirect-footer a{color:var(--gold)}
+@media(max-width:640px){
+  .whai-modal{max-height:92vh}
+  .whai-header{padding:1.25rem 1.35rem 0.85rem}
+  .whai-messages{padding:1.1rem 1.35rem}
+  .whai-msg{max-width:88%;font-size:14px}
+  .whai-footer{padding:0.85rem 1rem}
+}
 .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn-primary{background:#fff;color:var(--gold);font-weight:700;font-size:0.9rem;padding:13px 28px;border-radius:4px;text-decoration:none;letter-spacing:0.03em;border:1.5px solid var(--gold);cursor:pointer;transition:background .15s,color .15s}
 .btn-primary:hover{background:var(--gold-light)}
@@ -388,6 +434,8 @@ footer a:hover{color:var(--gold)}
   .hero-sub{font-size:0.95rem}
   .hero-actions{flex-direction:column;align-items:center}
   .hero-actions a,.hero-actions button{width:100%;max-width:320px;text-align:center}
+  .hero-search-input{font-size:14px;padding:14px}
+  .hero-search-btn{padding:0 18px}
 
   /* Stats bar */
   .stats-inner{grid-template-columns:repeat(3,1fr)}
@@ -615,18 +663,13 @@ footer a:hover{color:var(--gold)}
 
 <div class="hero">
   <div class="hero-inner">
-    <p class="hero-eyebrow">Warehouse Space For Rent · Las Vegas West Strip · Available Now</p>
-    <h1>Warehouse Space<br><em>For Rent in Las Vegas</em></h1>
-    <p class="hero-sub">Small warehouse units from 2,000 SF. Large warehouse space to 20,000 SF. Office warehouse combos available. West Strip Las Vegas — grade doors, 3-phase power, flexible terms. Text Jason and you're in.</p>
-    <div class="hero-actions">
-      <a href="#" onclick="whQzOpen();return false;" class="btn-primary">Get My Space Match →</a>
-      <a href="#units" class="btn-secondary">View Available Units</a>
+    <p class="hero-eyebrow">Intelligent Warehouse Matching · Las Vegas</p>
+    <h1>Find Your Perfect Warehouse<br><em>in 60 Seconds</em></h1>
+    <p class="hero-sub">Tell our AI what your business needs, and Jason will personally follow up with your best-matched warehouse options in Las Vegas.</p>
+    <div class="hero-search-wrap">
+      <input type="text" id="whAiHeroInput" class="hero-search-input" placeholder="e.g. Need 8,000 SF for an e-commerce business within 3 months…" onkeydown="if(event.key==='Enter'){event.preventDefault();whAiStartFromHero();}">
+      <button type="button" class="hero-search-btn" onclick="whAiStartFromHero()" aria-label="Start AI space match">→</button>
     </div>
-    <p style="margin-top:0.9rem;">
-      <a href="sms:7028636001" style="color:var(--text-muted);text-decoration:underline;font-size:0.82rem;">Text to Book a Showing</a>
-      <span style="color:var(--text-muted);font-size:0.82rem;"> · </span>
-      <a href="#" onclick="if(!chatOpen)toggleChat();return false;" style="color:var(--text-muted);text-decoration:underline;font-size:0.82rem;">💬 Or just ask a quick question — chat with Jason's assistant</a>
-    </p>
   </div>
 </div>
 
@@ -1607,6 +1650,19 @@ document.getElementById('wh-lead-form').addEventListener('submit', async functio
   </div>
 </div>
 
+<!-- AI CHAT INTAKE (homepage search bar) -->
+<div id="whai-overlay" onclick="if(event.target===this)whAiClose()" role="dialog" aria-modal="true" aria-label="Warehouse Space Match">
+  <div class="whai-modal">
+    <button class="whai-close" onclick="whAiClose()" aria-label="Close">✕</button>
+    <div class="whai-header">
+      <p class="whai-header-title">Warehouse Space Match</p>
+      <p class="whai-header-sub">Tell me what you need — I'll ask a few quick follow-ups, then get you to Jason.</p>
+    </div>
+    <div class="whai-messages" id="whai-messages"></div>
+    <div class="whai-footer" id="whai-footer"></div>
+  </div>
+</div>
+
 <!-- NEWSLETTER / DEAL ALERTS POPUP -->
 <div id="np-overlay" onclick="if(event.target===this)npClose()">
   <div class="np-modal">
@@ -2163,6 +2219,182 @@ document.getElementById('inq-form').addEventListener('submit', async function(e)
         '<p>Jason will review your requirements and be in touch shortly. Can\'t wait? Text him at <strong>702-863-6001</strong>.</p>'+
         '<button class="whqz-next whqz-cta" onclick="whQzClose()">Done</button>'+
       '</div>';
+  }
+})();
+</script>
+
+<script>
+// AI CHAT INTAKE — the homepage search bar's conversational replacement for
+// clicking through the step-by-step quiz above. Stateless on the backend:
+// this script owns the whole conversation client-side and resends it every
+// turn (see POST /v1/assessments/tenant-rep/chat). Submits through the same
+// tenant-rep endpoint + Web3Forms dual-write as the quiz, just with
+// desiredLocation and the full transcript attached.
+(function(){
+  var PLATFORM_CHAT_URL = PLATFORM_API_BASE + '/v1/assessments/tenant-rep/chat';
+
+  var whAiState = { messages: [], collected: {}, sending: false, isComplete: false, isStorageRedirect: false };
+
+  function whAiEsc(s){ var d=document.createElement('div'); d.textContent = String(s==null?'':s); return d.innerHTML; }
+
+  window.whAiStartFromHero = function(){
+    var input = document.getElementById('whAiHeroInput');
+    var text = (input.value || '').trim();
+    if(!text){ input.focus(); return; }
+    input.value = '';
+    whAiOpen(text);
+  };
+
+  function whAiOpen(firstMessage){
+    whAiState = { messages: [], collected: {}, sending: false, isComplete: false, isStorageRedirect: false };
+    document.getElementById('whai-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    whAiRenderFooter();
+    whAiSend(firstMessage);
+  }
+
+  window.whAiClose = function(){
+    document.getElementById('whai-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      var ov = document.getElementById('whai-overlay');
+      if(ov && ov.classList.contains('open')) whAiClose();
+    }
+  });
+
+  function whAiRenderMessages(){
+    var wrap = document.getElementById('whai-messages');
+    var html = whAiState.messages.map(function(m){
+      var cls = m.role === 'user' ? 'whai-msg-user' : 'whai-msg-assistant';
+      return '<div class="whai-msg '+cls+'">'+whAiEsc(m.content)+'</div>';
+    }).join('');
+    if(whAiState.sending){
+      html += '<div class="whai-typing"><span></span><span></span><span></span></div>';
+    }
+    wrap.innerHTML = html;
+    wrap.scrollTop = wrap.scrollHeight;
+  }
+
+  function whAiRenderFooter(){
+    var footer = document.getElementById('whai-footer');
+    if(whAiState.sending){
+      footer.innerHTML = '';
+      return;
+    }
+    if(whAiState.isStorageRedirect){
+      footer.innerHTML = '<div class="whai-redirect-footer">Looking for something else? <a href="sms:7028636001">Text Jason at 702-863-6001</a>.</div>';
+      return;
+    }
+    if(whAiState.isComplete){
+      footer.innerHTML =
+        '<div class="whai-contact-fields">'+
+          '<input class="whqz-input" id="whaiName" type="text" placeholder="Full name *">'+
+          '<input class="whqz-input" id="whaiPhone" type="tel" placeholder="Phone number *">'+
+          '<input class="whqz-input" id="whaiEmail" type="email" placeholder="Email address (optional)">'+
+          '<button class="whqz-next whqz-cta" onclick="whAiSubmitContact()">Send My Requirements →</button>'+
+          '<div id="whaiErr" style="color:#e35b5b;font-size:12.5px"></div>'+
+        '</div>';
+      return;
+    }
+    footer.innerHTML =
+      '<div class="whai-input-row">'+
+        '<input class="whai-text-input" id="whaiTextInput" type="text" placeholder="Type your answer…" onkeydown="if(event.key===\'Enter\'){event.preventDefault();whAiSendFromFooter();}">'+
+        '<button class="whai-send-btn" onclick="whAiSendFromFooter()">Send</button>'+
+      '</div>';
+    setTimeout(function(){ var el = document.getElementById('whaiTextInput'); if(el) el.focus(); }, 60);
+  }
+
+  window.whAiSendFromFooter = function(){
+    var input = document.getElementById('whaiTextInput');
+    if(!input) return;
+    var text = (input.value || '').trim();
+    if(!text) return;
+    whAiSend(text);
+  };
+
+  function whAiSend(text){
+    whAiState.messages.push({ role: 'user', content: text });
+    whAiState.sending = true;
+    whAiRenderMessages();
+    whAiRenderFooter();
+
+    fetch(PLATFORM_CHAT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: whAiState.messages })
+    }).then(function(res){
+      if(!res.ok) throw new Error('bad status');
+      return res.json();
+    }).then(function(data){
+      whAiState.sending = false;
+      var turn = data.data || data;
+      whAiState.messages.push({ role: 'assistant', content: turn.reply });
+      whAiState.collected = turn.collected || {};
+      whAiState.isComplete = !!turn.isComplete;
+      whAiState.isStorageRedirect = !!turn.isStorageRedirect;
+      whAiRenderMessages();
+      whAiRenderFooter();
+    }).catch(function(){
+      whAiState.sending = false;
+      whAiState.messages.push({ role: 'assistant', content: "Sorry, I'm having a connection issue. Text Jason directly at 702-863-6001 — he's usually quick to respond." });
+      whAiRenderMessages();
+      whAiRenderFooter();
+    });
+  }
+
+  window.whAiSubmitContact = function(){
+    var name = (document.getElementById('whaiName').value||'').trim();
+    var phone = (document.getElementById('whaiPhone').value||'').trim();
+    var email = (document.getElementById('whaiEmail').value||'').trim();
+    var err = document.getElementById('whaiErr');
+    if(!name){ err.textContent = 'Please enter your name.'; return; }
+    if(!phone){ err.textContent = 'Please enter your phone number.'; return; }
+    err.textContent = '';
+
+    var c = whAiState.collected || {};
+    var sizeNeeded = c.sizeNeeded || 'Not specified — ask visitor';
+    var budget = c.budget || 'Not specified — ask visitor';
+    var timeline = c.timeline || 'Not specified — ask visitor';
+
+    var transcript = 'AI SEARCH BAR CONVERSATION\n' + whAiState.messages.map(function(m){
+      return (m.role === 'user' ? 'Visitor: ' : 'Assistant: ') + m.content;
+    }).join('\n');
+
+    var btn = document.querySelector('.whai-contact-fields .whqz-cta');
+    if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    notifyPlatformTenantRep({
+      name: name, email: email || undefined, phone: phone,
+      sizeNeeded: sizeNeeded, budget: budget, timeline: timeline,
+      powerNeeds: c.powerNeeds || undefined, loadingRequirements: c.loadingRequirements || undefined,
+      businessType: c.businessType || undefined, desiredLocation: c.desiredLocation || undefined,
+      conversationTranscript: transcript
+    });
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        access_key: 'fed4e86d-322a-4d88-aa08-6f14f161b86b',
+        subject: 'Industrial Lead — AI Search Bar — ' + name,
+        from_name: 'LasVegasWarehouseForLease.com',
+        name: name, phone: phone, email: email || 'not provided',
+        message: transcript + '\n\nSize: ' + sizeNeeded + '\nBudget: ' + budget + '\nTimeline: ' + timeline + '\nLocation: ' + (c.desiredLocation||'Not specified')
+      })
+    }).then(function(){
+      whAiRenderSuccess();
+    }).catch(function(){
+      whAiRenderSuccess();
+    });
+  };
+
+  function whAiRenderSuccess(){
+    document.getElementById('whai-footer').innerHTML = '';
+    whAiState.messages.push({ role: 'assistant', content: "Got it — thank you! Jason will review your requirements and be in touch shortly. Can't wait? Text him at 702-863-6001." });
+    whAiRenderMessages();
   }
 })();
 </script>

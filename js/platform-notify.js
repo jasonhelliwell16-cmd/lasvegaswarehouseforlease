@@ -43,7 +43,12 @@ function notifyPlatformTenantRep(data) {
       timeline: data.timeline,
       powerNeeds: data.powerNeeds || undefined,
       loadingRequirements: data.loadingRequirements || undefined,
-      businessType: data.businessType || undefined
+      businessType: data.businessType || undefined,
+      desiredLocation: data.desiredLocation || undefined,
+      // Only set by the homepage's AI search bar — stored verbatim on the
+      // Lead so staff (and the closing-script prompt) see the visitor's own
+      // words, not just the extracted fields. undefined for the step quiz.
+      conversationTranscript: data.conversationTranscript || undefined
     })
   }).catch(function () {
     // Silent on purpose — Web3Forms already handled the real notification.
