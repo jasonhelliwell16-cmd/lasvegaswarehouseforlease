@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1335288735356765');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1335288735356765&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Warehouse For Rent Las Vegas | Small &amp; Large Units 2,000–20,000 SF | Helliwell CRE</title>
@@ -1305,6 +1322,7 @@ document.getElementById('wh-lead-form').addEventListener('submit', async functio
     const res = await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});
     const data = await res.json();
     if(data.success){
+      if(typeof fbq === 'function') fbq('track', 'Lead');
       document.getElementById('wh-modal-form-wrap').style.display = 'none';
       document.getElementById('wh-modal-success').style.display = 'block';
     } else { btn.textContent = 'Try again'; btn.disabled = false; }
@@ -1913,6 +1931,7 @@ async function submitHandoff(){
         message: transcript
       })
     });
+    if(typeof fbq === 'function') fbq('track', 'Lead');
   } catch(err){
     console.error('Handoff submit error:', err);
   }
@@ -1971,6 +1990,7 @@ document.getElementById('inq-form').addEventListener('submit', async function(e)
     });
     const data = await res.json();
     if(data.success){
+      if(typeof fbq === 'function') fbq('track', 'Lead');
       document.getElementById('modal-form-wrap').style.display = 'none';
       document.getElementById('modal-success').style.display = 'block';
     } else {
@@ -2205,6 +2225,7 @@ document.getElementById('inq-form').addEventListener('submit', async function(e)
         message: 'SPACE REQUIREMENTS QUIZ\nName: '+name+'\nPhone: '+phone+'\nEmail: '+(email||'not provided')+'\n\n'+lines
       })
     }).then(function(){
+      if(typeof fbq === 'function') fbq('track', 'Lead');
       whQzRenderSuccess();
     }).catch(function(){
       whQzRenderSuccess();
@@ -2385,6 +2406,7 @@ document.getElementById('inq-form').addEventListener('submit', async function(e)
         message: transcript + '\n\nSize: ' + sizeNeeded + '\nBudget: ' + budget + '\nTimeline: ' + timeline + '\nLocation: ' + (c.desiredLocation||'Not specified')
       })
     }).then(function(){
+      if(typeof fbq === 'function') fbq('track', 'Lead');
       whAiRenderSuccess();
     }).catch(function(){
       whAiRenderSuccess();
@@ -2457,6 +2479,8 @@ function npSubmit(){
       email: email,
       message: 'New space alert registration from the newsletter popup on lasvegaswarehouseforlease.com.\nEmail: ' + email
     })
+  }).then(function(){
+    if(typeof fbq === 'function') fbq('track', 'Lead');
   }).catch(function(){}).then(function(){
     document.getElementById('np-content').innerHTML =
       '<div class="np-icon">✅</div>' +
