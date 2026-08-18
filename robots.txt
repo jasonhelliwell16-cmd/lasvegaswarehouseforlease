@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lasvegaswarehouseforlease.com/sitemap.xml
